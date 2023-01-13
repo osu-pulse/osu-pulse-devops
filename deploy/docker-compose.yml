@@ -68,7 +68,7 @@ services:
       start_period: 1m
 
   server:
-    image: "ghcr.io/osu-pulse/osu-pulse-server:${SERVER__VERSION}"
+    image: "ghcr.io/osu-pulse/osu-pulse-server:${VERSION__SERVER}"
     environment:
       CORS: true
       DEBUG: true
@@ -79,7 +79,7 @@ services:
       DB_ENDPOINT: mongo
       DB_PORT: 27017
       DB_NAME: pulse
-      DB_USER: $MONGO__USERNAME
+      DB_USERNAME: $MONGO__USERNAME
       DB_PASSWORD: $MONGO__PASSWORD
       MI_ENDPOINT: minio
       MI_PORT: 9000
@@ -94,7 +94,6 @@ services:
     depends_on:
       - mongo
       - minio
-      - keycloak
     restart: unless-stopped
     healthcheck:
       test: curl -f http://server:5000/health
