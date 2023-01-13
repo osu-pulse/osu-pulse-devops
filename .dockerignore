@@ -1,0 +1,27 @@
+# Compiled output
+/node_modules
+/dist
+/coverage
+
+# Common
+README.md
+CHANGELOG.md
+docker-compose*.yml
+
+# Git
+.git
+.github
+.gitattributes
+.gitignore
+
+# JetBrains
+.idea
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*

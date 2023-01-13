@@ -1,0 +1,31 @@
+localhost {
+    encode gzip
+
+    handle_path /* {
+        reverse_proxy client:8080
+    }
+
+    rewrite /api /api/
+    handle_path /api/* {
+        reverse_proxy server:5000
+    }
+
+    rewrite /sio /sio/
+    handle_path /sio/* {
+        rewrite * /socket.io{path}
+        reverse_proxy server:5000
+    }
+
+    handle_path /graphql {
+        rewrite * /graphql
+        reverse_proxy server:5000
+    }
+
+    handle_path /minio/* {
+        reverse_proxy minio:9000
+    }
+
+    handle_path /health {
+        respond 200
+    }
+}
