@@ -128,7 +128,6 @@ services:
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - ./data/caddy/data:/data:rw
-      - ./data/caddy/backupMongoConfig:/backupMongoConfig:rw
     restart: unless-stopped
     healthcheck:
       test: curl -f http://caddy:80/health
