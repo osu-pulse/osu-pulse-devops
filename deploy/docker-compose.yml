@@ -72,10 +72,10 @@ services:
     environment:
       CORS: true
       DEBUG: true
-      URL_API: "https://${DEPLOY__HOST}/api"
-      URL_WEB_CLIENT: "https://${DEPLOY__HOST}"
-      URL_MINIO: "https://${DEPLOY__HOST}/minio"
-      SECRET_COOKIE: $SECRET__COOKIE
+      URL_API: "http://${DEPLOY__HOST}/api"
+      URL_OAUTH: "http://${DEPLOY__HOST}/oauth"
+      URL_WEB_CLIENT: "http://${DEPLOY__HOST}"
+      URL_MINIO: "http://${DEPLOY__HOST}/minio"
       DB_ENDPOINT: mongo
       DB_PORT: 27017
       DB_NAME: pulse

@@ -5,5 +5,5 @@ cypress/screenshots
 cypress/videos
 **/data
 deploy/.env
-deploy/.env.*.local
+
 

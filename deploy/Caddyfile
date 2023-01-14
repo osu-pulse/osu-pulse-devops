@@ -10,6 +10,11 @@ localhost {
         reverse_proxy server:5000
     }
 
+    handle_path /oauth/* {
+        rewrite * /oauth{path}
+        reverse_proxy server:5000
+    }
+
     rewrite /sio /sio/
     handle_path /sio/* {
         rewrite * /socket.io{path}
