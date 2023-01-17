@@ -10,6 +10,7 @@ localhost {
         reverse_proxy server:5000
     }
 
+    redir /oauth/ /oauth/authorize
     handle_path /oauth/* {
         rewrite * /oauth{path}
         reverse_proxy server:5000
