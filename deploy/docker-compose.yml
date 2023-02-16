@@ -12,7 +12,7 @@ services:
     expose:
       - 27017
     ports:
-      - "8000:27017"
+      - "6000:27017"
     restart: unless-stopped
     healthcheck:
       test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/pulse --quiet
@@ -34,8 +34,8 @@ services:
       - 9000
       - 9001
     ports:
-      - "8002:9000"
-      - "8003:9001"
+      - "6002:9000"
+      - "6003:9001"
     restart: unless-stopped
     healthcheck:
       test: curl -f http://minio:9000/minio/health/live
@@ -67,7 +67,7 @@ services:
     expose:
       - 5000
     ports:
-      - "8004:5000"
+      - "6004:5000"
     depends_on:
       - mongo
       - minio
@@ -79,26 +79,26 @@ services:
       retries: 5
       start_period: 1m
 
-#  web-client:
-#    image: "ghcr.io/osu-pulse/osu-pulse-client:${VERSION__CLIENT}"
-#    expose:
-#      - 8080
-#    ports:
-#      - "8005:8080"
-#    restart: unless-stopped
-#    healthcheck:
-#      test: curl -f http://client:80
-#      interval: 1m
-#      timeout: 10s
-#      retries: 5
-#      start_period: 1m
+  client:
+    image: "ghcr.io/osu-pulse/osu-pulse-client:${VERSION__CLIENT}"
+    expose:
+      - 8080
+    ports:
+      - "6005:8080"
+    restart: unless-stopped
+    healthcheck:
+      test: curl -f http://client:80
+      interval: 1m
+      timeout: 10s
+      retries: 5
+      start_period: 1m
 
   nginx:
     image: nginx:alpine
     expose:
       - 80
     ports:
-      - "8006:80"
+      - "6006:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     restart: unless-stopped
@@ -109,17 +109,12 @@ services:
       retries: 5
       start_period: 1m
 
-
-
   caddy:
     image: caddy:alpine
     expose:
       - 80
-      - 443
     ports:
-      - "8007:80"
-      - "80:80"
-      - "443:443"
+      - "6007:80"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - ./data/caddy/data:/data:rw

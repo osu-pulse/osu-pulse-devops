@@ -2,6 +2,7 @@
     encode gzip
 
     handle_path /* {
+        encode gzip
         reverse_proxy osu-pulse-client-1:8080
     }
 
@@ -23,6 +24,7 @@
 
     handle_path /graphql {
         rewrite * /graphql
+        encode gzip
         reverse_proxy osu-pulse-server-1:5000
     }
 
