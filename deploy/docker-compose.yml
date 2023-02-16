@@ -51,8 +51,9 @@ services:
       DEBUG: true
       URL_API: "http://${DEPLOY__HOST}/api"
       URL_AUTH: "http://${DEPLOY__HOST}/auth"
-      URL_WEB_CLIENT: "http://${DEPLOY__HOST}:8080"
+      URL_CLIENT: "http://${DEPLOY__HOST}"
       URL_MINIO: "http://${DEPLOY__HOST}/minio"
+      URL_OSU: "http://${DEPLOY__HOST}/osu"
       DB_ENDPOINT: mongo
       DB_PORT: 27017
       DB_NAME: pulse
