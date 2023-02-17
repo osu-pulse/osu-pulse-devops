@@ -13,6 +13,8 @@ services:
       - 27017
     ports:
       - "6000:27017"
+    networks:
+      - internal
     restart: unless-stopped
     healthcheck:
       test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/pulse --quiet
@@ -36,6 +38,8 @@ services:
     ports:
       - "6002:9000"
       - "6003:9001"
+    networks:
+      - internal
     restart: unless-stopped
     healthcheck:
       test: curl -f http://minio:9000/minio/health/live
@@ -69,6 +73,8 @@ services:
       - 5000
     ports:
       - "6004:5000"
+    networks:
+      - internal
     depends_on:
       - mongo
       - minio
@@ -86,6 +92,8 @@ services:
       - 8080
     ports:
       - "6005:8080"
+    networks:
+      - internal
     restart: unless-stopped
     healthcheck:
       test: curl -f http://client:80
@@ -100,6 +108,8 @@ services:
       - 80
     ports:
       - "6006:80"
+    networks:
+      - internal
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     restart: unless-stopped
@@ -120,6 +130,7 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - ./data/caddy/data:/data:rw
     networks:
+      - internal
       - caddy
     restart: unless-stopped
     healthcheck:
@@ -130,5 +141,6 @@ services:
       start_period: 1m
 
 networks:
+  internal:
   caddy:
     external: true
