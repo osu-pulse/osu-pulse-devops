@@ -53,11 +53,11 @@ services:
     environment:
       CORS: true
       DEBUG: true
-      URL_API: "http://${DEPLOY__HOST}/api"
-      URL_AUTH: "http://${DEPLOY__HOST}/auth"
-      URL_CLIENT: "http://${DEPLOY__HOST}"
-      URL_MINIO: "http://${DEPLOY__HOST}/minio"
-      URL_OSU: "http://${DEPLOY__HOST}/osu"
+      URL_API: "https://${DEPLOY__HOST}/api"
+      URL_AUTH: "https://${DEPLOY__HOST}/auth"
+      URL_CLIENT: "https://${DEPLOY__HOST}"
+      URL_MINIO: "https://${DEPLOY__HOST}/minio"
+      URL_OSU: "https://${DEPLOY__HOST}/osu"
       DB_ENDPOINT: mongo
       DB_PORT: 27017
       DB_NAME: pulse
