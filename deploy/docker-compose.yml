@@ -119,6 +119,8 @@ services:
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - ./data/caddy/data:/data:rw
+    networks:
+      - caddy
     restart: unless-stopped
     healthcheck:
       test: curl -f http://caddy:80/health
@@ -126,3 +128,7 @@ services:
       timeout: 10s
       retries: 5
       start_period: 1m
+
+networks:
+  caddy:
+    external: true
