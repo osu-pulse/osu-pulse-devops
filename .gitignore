@@ -4,6 +4,6 @@ cypress/downloads
 cypress/screenshots
 cypress/videos
 deploy/data
-deploy/.env
+deploy/dev/.env
 
 
