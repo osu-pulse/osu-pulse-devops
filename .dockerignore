@@ -6,7 +6,7 @@
 # Common
 README.md
 CHANGELOG.md
-deploy/dev/docker-compose.yml
+deploy/docker-compose.yml
 
 # Git
 .git
