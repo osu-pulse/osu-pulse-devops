@@ -55,7 +55,6 @@ services:
       DEBUG: true
       URL_API: "https://${DEPLOY__HOST}/api"
       URL_AUTH: "https://${DEPLOY__HOST}/auth"
-      URL_CLIENT: "https://${DEPLOY__HOST}"
       URL_MINIO: "https://${DEPLOY__HOST}/minio"
       URL_OSU: "https://${DEPLOY__HOST}/osu"
       DB_ENDPOINT: mongo
