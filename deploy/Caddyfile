@@ -29,7 +29,6 @@
     }
 
     handle_path /minio/* {
-        header_down +Access-Control-Allow-Origin "*"
         reverse_proxy osu-pulse-minio-1:9000
     }
 
